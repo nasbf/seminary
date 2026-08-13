@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>En medio de la prueba — Seminario</title>
+<style>
+:root{--purple:#6336b5;--purple2:#8a5bd0;--ink:#29243a;--soft:#f8f5ff;--line:#ded5ed}
+*{box-sizing:border-box}
+body{margin:0;background:var(--soft);color:var(--ink);font-family:Arial,sans-serif}
+.page{max-width:1050px;margin:auto;padding:16px}
+.hero{position:relative;overflow:hidden;border-radius:24px;background:#fff;box-shadow:0 10px 30px #2f20501c}
+.hero img{display:block;width:100%;height:300px;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,#38206fdd 0%,#6336b5b8 52%,transparent 100%);display:flex;align-items:center;padding:30px}
+.hero-title{color:white;font-size:clamp(34px,5vw,58px);margin:0;font-weight:800}
+.hero-sub{color:#fff;margin:10px 0 0;font-size:16px;max-width:570px;line-height:1.45}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px;box-shadow:0 6px 18px #2f20500d}
+.scripture{background:#f0e9ff;border-left:6px solid var(--purple)}
+h2{margin:0 0 10px;color:#4c268c;font-size:22px}
+.question{font-size:18px;font-weight:700;line-height:1.45}
+textarea{width:100%;min-height:105px;resize:vertical;border:2px solid var(--line);border-radius:13px;padding:12px;font:inherit;color:var(--ink);background:#fff}
+textarea:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 4px #6336b51a}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.note{padding:16px;border-radius:16px;min-height:205px}
+.note:nth-child(1){background:#eee6ff}
+.note:nth-child(2){background:#fff2b8}
+.note:nth-child(3){background:#ffdce2}
+.note h3{margin:0 0 4px;font-size:18px}
+.note small{display:block;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#625b70;margin-bottom:10px}
+.reflection{background:#e0f7f3}
+.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:999px;padding:11px 17px;font:inherit;font-weight:700;cursor:pointer}
+.save{background:var(--purple);color:#fff}
+.download,.clear{background:#fff;color:var(--purple);border:1px solid #cfc1e6}
+.status{min-height:22px;margin-top:10px;font-size:13px;font-weight:700}
+.footer{text-align:center;padding:14px;color:#70697b;font-size:12px}
+@media(max-width:760px){.page{padding:8px}.hero img{height:210px}.hero-overlay{padding:20px;background:linear-gradient(90deg,#38206fee,#6336b5c9)}.hero-sub{font-size:14px}.notes{grid-template-columns:1fr}.card{padding:15px}}
+@media print{.buttons,.status{display:none}body{background:white}.card,.hero{box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="hero">
+  <img src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Persona enfrentando una prueba difícil">
+  <div class="hero-overlay">
+    <div>
+      <h1 class="hero-title">En medio de la prueba</h1>
+      <p class="hero-sub">A veces no podemos elegir la prueba, pero sí podemos decidir qué conocimiento nos ayudará a seguir adelante.</p>
+    </div>
+  </div>
+</header>
+
+<section class="card scripture">
+  <h2>📖 Job 19:25–27</h2>
+  <p><strong>Lee estos versículos en tus Escrituras.</strong> Después piensa en la verdad que Job conocía acerca de su Redentor mientras atravesaba sus pruebas.</p>
+</section>
+
+<section class="card">
+  <h2>💭 Pensemos en Job</h2>
+  <p class="question">¿Cómo influyó en Job ese conocimiento mientras sobrellevaba sus pruebas?</p>
+  <textarea id="job" placeholder="Escribe aquí tus pensamientos..."></textarea>
+</section>
+
+<section class="card">
+  <h2 style="text-align:center">✍️ Mi aprendizaje</h2>
+  <div class="notes">
+    <div class="note">
+      <h3>💡 DOCTRINA</h3>
+      <small>Fue · Es · Será</small>
+      <textarea id="doctrine" placeholder="¿Qué verdad aprendí?"></textarea>
+    </div>
+    <div class="note">
+      <h3>👣 INVITACIONES</h3>
+      <small>Acciones</small>
+      <textarea id="invitations" placeholder="¿Qué me invita el Señor a hacer?"></textarea>
+    </div>
+    <div class="note">
+      <h3>🎁 BENDICIONES</h3>
+      <small>Promesas</small>
+      <textarea id="blessings" placeholder="¿Qué bendiciones o promesas encontré?"></textarea>
+    </div>
+  </div>
+</section>
+
+<section class="card reflection">
+  <h2>❤️ Tu propia historia</h2>
+  <p class="question">¿Cómo influye en ti este conocimiento mientras sobrellevas tus pruebas?</p>
+  <textarea id="personal" placeholder="Escribe algo que quieras recordar cuando estés pasando por una prueba..."></textarea>
+  <div class="buttons">
+    <button class="save" onclick="save()">💾 Guardar mi reflexión</button>
+    <button class="download" onclick="downloadAnswers()">⬇️ Descargar respuestas</button>
+    <button class="clear" onclick="clearAll()">🗑️ Borrar</button>
+  </div>
+  <div id="status" class="status"></div>
+</section>
+
+<div class="footer">Seminario · Una verdad para recordar en medio de la prueba 💜</div>
+</div>
+
+<script>
+const ids=["job","doctrine","invitations","blessings","personal"];
+function save(){
+  const d={}; ids.forEach(id=>d[id]=document.getElementById(id).value);
+  localStorage.setItem("seminario_en_medio_prueba",JSON.stringify(d));
+  const s=document.getElementById("status"); s.textContent="✓ Tus respuestas quedaron guardadas en este dispositivo."; s.style.color="#39715f";
+}
+function load(){
+  try{const d=JSON.parse(localStorage.getItem("seminario_en_medio_prueba")||"{}");ids.forEach(id=>{if(d[id])document.getElementById(id).value=d[id]})}catch(e){}
+}
+function clearAll(){
+  if(confirm("¿Seguro que quieres borrar todas tus respuestas?")){
+    ids.forEach(id=>document.getElementById(id).value="");
+    localStorage.removeItem("seminario_en_medio_prueba");
+    document.getElementById("status").textContent="Tus respuestas fueron borradas.";
+  }
+}
+function downloadAnswers(){
+  const labels={job:"Pensemos en Job",doctrine:"DOCTRINA — Fue, Es, Será",invitations:"INVITACIONES — Acciones",blessings:"BENDICIONES — Promesas",personal:"Tu propia historia"};
+  let t="EN MEDIO DE LA PRUEBA\nJob 19:25–27\n\n";
+  ids.forEach(id=>t+="\n"+labels[id]+"\n"+(document.getElementById(id).value.trim()||"—")+"\n");
+  const b=new Blob([t],{type:"text/plain;charset=utf-8"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(b);a.download="mi-reflexion-en-medio-de-la-prueba.txt";a.click();URL.revokeObjectURL(a.href);
+}
+load();
+</script>
+</body>
+</html>
